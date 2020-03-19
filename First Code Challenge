@@ -11,7 +11,7 @@ int main()
 		forward();
 				}
 			ao();
-	while(digital(l_bumper)==0){
+	while(digital(l_bumper)==0){//turn until left bumper hits the wall
 		turn();
 		}	
 		ao();	
