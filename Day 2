@@ -1,0 +1,41 @@
+// Created on Mon March 23 2020
+int l_motor=0;
+int r_motor=2;
+int l_bump=8;
+int r_bump=9;
+int top=6;
+
+int main()
+{
+	while(analog(top)<500){
+	veer1();//while top sees no line veer right
+	printf("veer1\n");	
+		}
+	ao();	
+	while (digital(r_bump)==0){
+		forward();//keep going forward untill wall it hit
+		}
+	ao();
+	back();//back up and turn towards line
+	turn();
+		return 0;
+}
+
+void veer1(){
+	motor(l_motor,100);
+	motor(r_motor,70);
+	}
+void forward(){
+	motor(l_motor,100);
+	motor(r_motor,100);
+	}
+void back(){
+	motor(l_motor,-100);
+	motor(r_motor,-100);
+	msleep(400);
+	}
+void turn(){
+	motor(l_motor,-20);
+	motor(r_motor,60);
+	msleep(1100);
+	}
