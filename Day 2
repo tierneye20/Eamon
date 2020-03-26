@@ -3,11 +3,12 @@ int l_motor=0;
 int r_motor=2;
 int l_bump=8;
 int r_bump=9;
-int top=6;
+int rtop=6;
+int ltop=5;
 
 int main()
 {
-	while(analog(top)<500){
+	while(analog(rtop)<500){
 	veer1();//while top sees no line veer right
 	printf("veer1\n");	
 		}
@@ -18,6 +19,20 @@ int main()
 	ao();
 	back();//back up and turn towards line
 	turn();
+	while(analog(rtop)<500){//go forward till right sensor hits line
+		printf("forward\n");
+		forward();
+		}
+	ao();
+	while(analog(ltop)<500){//turn back toward line until left sensor sees line
+		printf("turn2\n");
+		turn2();
+		if(digital(l_bump)==1){//if left bumper hits wall stop
+			break;
+			}
+		}
+	ao();
+	turn2();
 		return 0;
 }
 
@@ -37,5 +52,9 @@ void back(){
 void turn(){
 	motor(l_motor,-20);
 	motor(r_motor,60);
-	msleep(1100);
+	msleep(1400);
+	}
+void turn2(){
+	motor(l_motor,100);
+	motor(r_motor,85);
 	}
