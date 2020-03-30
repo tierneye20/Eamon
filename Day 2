@@ -33,7 +33,19 @@ int main()
 		}
 	ao();
 	turn2();
-		return 0;
+	back();//back up and turn towards the horizontal black line
+	turn3();
+	while(analog(rtop)<500){
+	forward();//drive forward till veritcal black line and stop
+	}
+	ao();
+	msleep(1000);
+	forward2();//move past vertical black line
+	while(analog(rtop)<500){
+	forward();//drive till horizontal black line an stop
+	}
+	ao();
+	return 0;
 }
 
 void veer1(){
@@ -50,11 +62,26 @@ void back(){
 	msleep(400);
 	}
 void turn(){
-	motor(l_motor,-20);
+	motor(l_motor,-15);
 	motor(r_motor,60);
-	msleep(1400);
+	msleep(1250);
 	}
 void turn2(){
 	motor(l_motor,100);
 	motor(r_motor,85);
+	}
+void turn3(){
+	motor(l_motor,0);
+	motor(r_motor,90);
+	msleep(1100);
+	}
+void back2(){
+	motor(l_motor,-100);
+	motor(r_motor,-100);
+	msleep(1900);
+	}
+void forward2(){
+	motor(l_motor,100);
+	motor(r_motor,100);
+	msleep(800);
 	}
