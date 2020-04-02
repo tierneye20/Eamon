@@ -1,0 +1,35 @@
+// Created on Mon March 23 2020
+int l_motor=0;
+int r_motor=2;
+int l_range=0;
+int r_range=2;
+int ltop=5;
+int rtop=6;
+int l_bump=8;
+int r_bump=9;
+
+
+int main()
+{	
+	while (digital(l_bump)==0){
+		wallfollow();
+		}
+	return 0;
+}
+
+void wallfollow(){
+	if(analog(r_range) >350){
+		veerl();
+		}
+	if(analog(r_range) <350){
+		veerr();
+		}
+	}
+void veerl(){
+	motor(l_motor,100);
+	motor(r_motor,20);
+	}
+void veerr(){
+	motor(l_motor,20);
+	motor(r_motor,100);
+	}
