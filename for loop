@@ -1,0 +1,20 @@
+// Created on Mon April 6 2020
+
+
+int main()
+{
+	int loop;
+	for(loop=1;loop<=10;loop++){
+		drive();
+		printf("loop is %d \n",loop);
+		}
+	return 0;
+}
+void drive(){
+	motor(0,100);
+	motor(2,100);
+	msleep(400);
+	motor(0,20);
+	motor(2,100);
+	msleep(400);
+	}
